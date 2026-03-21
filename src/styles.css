@@ -1,0 +1,32 @@
+body{
+    background-color:cornsilk;
+    font-family: 'DM Serif Display', serif;
+}
+
+#Presentacion{
+    text-align: center;
+    background-color: lightcoral;
+    border-radius: 10px;
+    padding-top: 1px;
+    padding-bottom: 5px; 
+    line-height: 0.7;
+}
+
+.Contenido{
+    background-color: lightblue;
+    border-radius: 10px;
+    padding-top: 1px;
+    padding-bottom: 5px;
+    line-height: 0.7;
+    margin-top: 10px;
+}
+
+#Inicial.Contenido{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#Seguna.Contenido{
+    padding-left: 10px;
+    padding-right: 10px;
+}
