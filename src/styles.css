@@ -31,6 +31,16 @@ body{
     padding-right: 10px;
 }
 
+#About.Contenido{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#Objetivo.Contenido{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 #Exp{
     font-size: 0.8em;
 }
