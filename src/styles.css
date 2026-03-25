@@ -26,7 +26,11 @@ body{
     padding-right: 10px;
 }
 
-#Seguna.Contenido{
+#Segunda.Contenido{
     padding-left: 10px;
     padding-right: 10px;
+}
+
+#Exp{
+    font-size: 0.8em;
 }
