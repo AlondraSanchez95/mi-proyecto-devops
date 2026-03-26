@@ -28,4 +28,4 @@ Para el simulador solo use el Git Bash de Visual Studio Code
 ## Cambios realizados en la Actividad 3
 - Se agregaron nuevas secciones de contenido
 - Se mejoraron estilos y estructura
-- Se trabajó de forma colaborativa con ramas
+- Se trabajó de forma colaborativa con ramas#Validacion CI funcionando
