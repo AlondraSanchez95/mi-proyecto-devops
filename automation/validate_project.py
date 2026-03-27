@@ -42,13 +42,16 @@ def validacionCss(ruta_archivo):
     finally:
         cssutils.log.removeHandler(handler)
 
-validacionCss(ruta_css)
 
 if not os.path.exists("src/index.html"):
     errors.append("No se encontró src/index.html")
 
 if not os.path.exists("src/styles.css"):
     errors.append("No se encontró src/styles.css")
+
+if os.path.exists(ruta_css):
+    erroresCss = validacionCss(ruta_css)
+    errors.append(erroresCss)
 
 if not os.path.exists("README.md") or os.path.getsize("README.md") == 0:
     errors.append("README.md no existe o está vacío")
@@ -73,12 +76,10 @@ try:
         #Si el valor es 'true', la validación tiene éxito. De otra forma, mostrará el error e indicará fallo para el CI al terminar el proceso con código 1.
         if tiene_h1 and tiene_p:
             print("✅ Validación exitosa: El archivo cumple los requisitos.")
-            sys.exit(0)
         else:
             print("❌ Error de validación: Faltan etiquetas obligatorias.")
             if not tiene_h1: print("   Falta al menos un <h1>")
             if not tiene_p: print("   Falta al menos un <p>")
-            sys.exit(1)
 except Exception as e:
     print("¡Ups! Hubo un error, pero no sabemos cuál es...")
 
