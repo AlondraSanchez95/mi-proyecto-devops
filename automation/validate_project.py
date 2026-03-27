@@ -6,7 +6,8 @@ import logging
 from bs4 import BeautifulSoup
 
 errors = []
-directorio_base = Path(__file__).resolve().parent
+directorio_base = Path(__file__).resolve()
+directorio_raiz = directorio_base.parent.parent
 ruta_css = directorio_base / "src"/ "styles.css"
 ruta_html = directorio_base / "src" / "index.html"
 cssutils.log.setLevel(logging.WARNING)
