@@ -10,14 +10,15 @@ directorio_base = Path(__file__).resolve()
 directorio_raiz = directorio_base.parent.parent
 ruta_css = directorio_raiz / "src"/ "styles.css"
 ruta_html = directorio_raiz / "src" / "index.html"
-cssutils.log.setLevel(logging.WARNING)
+cssutils.log.setLevel(logging.ERROR)
 
 def validacionCss(ruta_archivo):
     print(f"Errores encontrados en : {ruta_archivo}")
     errores = []
     class erroresCapturados(logging.Handler):
         def emit(self,record):
-            errores.append(record.getMessage())
+            if record.levelno >= logging.ERROR:
+                errores.append(record.getMessage())
     handler = erroresCapturados()
     cssutils.log.addHandler(handler)
     cssutils.log.setLevel(logging.DEBUG)
