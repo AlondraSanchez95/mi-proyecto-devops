@@ -18,9 +18,19 @@ def validacionCss(ruta_archivo):
             errores.append(record.getMessage())
     handler = erroresCapturados()
     cssutils.log.addHandler(handler)
+    cssutils.log.setLevel(logging.DEBUG)
     try:
-        sheet = cssutils.parseFile(ruta_archivo)
-        sheet.validate()
+        parser = cssutils.CSSParser(validate=True)
+        sheet = parser.parseFile(ruta_archivo)
+        tieneFontFamily = False
+        for rule in sheet:
+            if rule.type == rule.STYLE_RULE:
+                for property in rule.style:
+                    if "font-family" in rule.style:
+                        tieneFontFamily = True
+                        break
+        if tieneFontFamily:
+            print("Si se encontro una regla Font-Family")
         if not errores:
             print("Sin ningun error :)")
         else:
@@ -31,6 +41,8 @@ def validacionCss(ruta_archivo):
         print(f"Error al intentar abrir el archivo {e}")
     finally:
         cssutils.log.removeHandler(handler)
+        
+validacionCss(ruta_css)
 
 if not os.path.exists("src/index.html"):
     errors.append("No se encontró src/index.html")
@@ -68,7 +80,6 @@ try:
             if not tiene_p: print("   Falta al menos un <p>")
             sys.exit(1)
 
-validacionCss(ruta_css)
 
 if errors:
     print("Errores encontrados:")
