@@ -1,6 +1,8 @@
 import os
 import sys
 
+html = os.path.abspath("src/index.html")
+
 errors = []
 
 if not os.path.exists("src/index.html"):
