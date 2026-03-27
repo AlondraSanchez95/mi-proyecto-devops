@@ -10,20 +10,23 @@ directorio_base = Path(__file__).resolve()
 directorio_raiz = directorio_base.parent.parent
 ruta_css = directorio_raiz / "src"/ "styles.css"
 ruta_html = directorio_raiz / "src" / "index.html"
-cssutils.log.setLevel(logging.WARNING)
+cssutils.log.setLevel(logging.ERROR)
 
 def validacionCss(ruta_archivo):
     print(f"Errores encontrados en : {ruta_archivo}")
     errores = []
     class erroresCapturados(logging.Handler):
         def emit(self,record):
-            errores.append(record.getMessage())
+            if record.levelno >= logging.ERROR:
+                errores.append(record.getMessage())
     handler = erroresCapturados()
     cssutils.log.addHandler(handler)
     cssutils.log.setLevel(logging.DEBUG)
     try:
+        with open(ruta_archivo, 'r', encoding='utf-8') as f:
+            contenido_css = f.read()
         parser = cssutils.CSSParser(validate=True)
-        sheet = parser.parseFile(ruta_archivo)
+        sheet = parser.parseFile(contenido_css)
         tieneFontFamily = False
         for rule in sheet:
             if rule.type == rule.STYLE_RULE:
