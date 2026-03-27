@@ -23,9 +23,10 @@ def validacionCss(ruta_archivo):
     cssutils.log.addHandler(handler)
     cssutils.log.setLevel(logging.DEBUG)
     try:
+        with open(ruta_archivo, 'r', encoding='utf-8') as f:
+            contenido_css = f.read()
         parser = cssutils.CSSParser(validate=True)
-        sheet = parser.parseFile(ruta_archivo)
-        texto_css = sheet.cssText
+        sheet = parser.parseFile(contenido_css)
         tieneFontFamily = False
         for rule in sheet:
             if rule.type == rule.STYLE_RULE:
