@@ -7,8 +7,8 @@ from bs4 import BeautifulSoup
 
 errors = []
 directorio_base = Path(__file__).resolve().parent
-ruta_css = directorio_base / "styles.css"
-ruta_html = directorio_base / "index.html"
+ruta_css = directorio_base / "src"/ "styles.css"
+ruta_html = directorio_base / "src" / "index.html"
 cssutils.log.setLevel(logging.WARNING)
 
 def validacionCss(ruta_archivo):
