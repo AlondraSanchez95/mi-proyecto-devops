@@ -25,6 +25,7 @@ def validacionCss(ruta_archivo):
     try:
         parser = cssutils.CSSParser(validate=True)
         sheet = parser.parseFile(ruta_archivo)
+        texto_css = sheet.cssText
         tieneFontFamily = False
         for rule in sheet:
             if rule.type == rule.STYLE_RULE:
