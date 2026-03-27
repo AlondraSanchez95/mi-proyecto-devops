@@ -3,6 +3,7 @@ import sys
 import cssutils
 from pathlib import Path
 import logging
+from bs4 import BeautifulSoup
 
 errors = []
 directorio_base = Path(__file__).resolve().parent
@@ -40,13 +41,35 @@ if not os.path.exists("src/styles.css"):
 if not os.path.exists("README.md") or os.path.getsize("README.md") == 0:
     errors.append("README.md no existe o está vacío")
 
-if html.count("<h1>") < 1:
-    errors.append("index.html debe contener un h1")
-
-if html.count("<p>") < 1:
-    errors.append("index.html debe contener al menos un párrafo")
+try:
+        # Se intenta abrir y leer el contenido del HTML
+        with open('index.html', 'r', encoding='utf-8') as html:
+            contenido = html.read()
+        
+        # Se crea el objeto 'soup' para analizar el HTML
+        soup = BeautifulSoup(contenido, 'html.parser')
+        
+        # Se buscan las etiquetas h1 y p. Estas se guardarán en una lista.
+        etiquetas_h1 = soup.find_all('h1')
+        etiquetas_p = soup.find_all('p')
+        
+        # LÓGICA DE VALIDACIÓN
+        # Se verifica la longitud de las listas encontradas. Las variables declaradas tendrán valor 'false' en caso de que no haya al menos una etiqueta de ese tipo.
+        tiene_h1 = len(etiquetas_h1) >= 1
+        tiene_p = len(etiquetas_p) >= 1
+        
+        #Si el valor es 'true', la validación tiene éxito. De otra forma, mostrará el error e indicará fallo para el CI al terminar el proceso con código 1.
+        if tiene_h1 and tiene_p:
+            print("✅ Validación exitosa: El archivo cumple los requisitos.")
+            sys.exit(0)
+        else:
+            print("❌ Error de validación: Faltan etiquetas obligatorias.")
+            if not tiene_h1: print("   Falta al menos un <h1>")
+            if not tiene_p: print("   Falta al menos un <p>")
+            sys.exit(1)
 
 validacionCss(ruta_css)
+
 if errors:
     print("Errores encontrados:")
     for error in errors:
