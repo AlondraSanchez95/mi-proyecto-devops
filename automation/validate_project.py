@@ -6,8 +6,10 @@ import logging
 from bs4 import BeautifulSoup
 
 errors = []
-directorio_base = Path(__file__).resolve().parent
-ruta_css = directorio_base / "styles.css"
+directorio_base = Path(__file__).resolve()
+directorio_raiz = directorio_base.parent.parent
+ruta_css = directorio_raiz / "src"/ "styles.css"
+ruta_html = directorio_raiz / "src" / "index.html"
 cssutils.log.setLevel(logging.WARNING)
 
 def validacionCss(ruta_archivo):
@@ -41,6 +43,7 @@ def validacionCss(ruta_archivo):
         print(f"Error al intentar abrir el archivo {e}")
     finally:
         cssutils.log.removeHandler(handler)
+    return errores
 
 
 if not os.path.exists("src/index.html"):
@@ -51,14 +54,14 @@ if not os.path.exists("src/styles.css"):
 
 if os.path.exists(ruta_css):
     erroresCss = validacionCss(ruta_css)
-    errors.append(erroresCss)
+    errors.extend(erroresCss)
 
 if not os.path.exists("README.md") or os.path.getsize("README.md") == 0:
     errors.append("README.md no existe o está vacío")
 
 try:
         # Se intenta abrir y leer el contenido del HTML
-        with open('index.html', 'r', encoding='utf-8') as html:
+        with open(ruta_html, 'r', encoding='utf-8') as html:
             contenido = html.read()
         
         # Se crea el objeto 'soup' para analizar el HTML
@@ -82,6 +85,7 @@ try:
             if not tiene_p: print("   Falta al menos un <p>")
 except Exception as e:
     print("¡Ups! Hubo un error, pero no sabemos cuál es...")
+    errors.append(str(e))
 
 
 if errors:
