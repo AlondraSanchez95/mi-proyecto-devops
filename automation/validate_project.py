@@ -67,6 +67,8 @@ try:
             if not tiene_h1: print("   Falta al menos un <h1>")
             if not tiene_p: print("   Falta al menos un <p>")
             sys.exit(1)
+except Exception as e:
+    print("¡Ups! Hubo un error, pero no sabemos cuál es...")
 
 validacionCss(ruta_css)
 
