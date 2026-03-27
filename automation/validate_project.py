@@ -41,6 +41,7 @@ def validacionCss(ruta_archivo):
         print(f"Error al intentar abrir el archivo {e}")
     finally:
         cssutils.log.removeHandler(handler)
+    return errores
 
 
 if not os.path.exists("src/index.html"):
