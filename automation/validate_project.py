@@ -23,7 +23,7 @@ def validacionCss(ruta_archivo):
     cssutils.log.addHandler(handler)
     cssutils.log.setLevel(logging.DEBUG)
     try:
-        with open(ruta_archivo, 'r', encoding='utf-8') as f:
+        with open(ruta_archivo, encoding='utf-8') as f:
             contenido_css = f.read()
         parser = cssutils.CSSParser(validate=True)
         sheet = parser.parseFile(contenido_css)
