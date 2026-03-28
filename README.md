@@ -48,3 +48,12 @@ Braulio
 Intervención externa (Actividad 5B)
 - Equipo visitante: Equipo 2 (Braulio Luna, Carlos Pérez)
 - Observación general del proyecto
+
+// Carlos
+*El contenido está bien estructurado, y tiene buen empleo 
+de cada lenguaje de programación. Sólo sugeriría clasificar 
+mejor el contenido, especialmente del Python. Y mejorar un
+poco más la ortografía. 
+Fuera de ello, el contenido se ve bien. 
+Muchas gracias. 
+// 
