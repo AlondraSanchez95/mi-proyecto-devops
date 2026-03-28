@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - feature-ci
+      - feature
   pull_request:
 
 jobs:
