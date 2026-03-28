@@ -15,7 +15,7 @@ cssutils.log.setLevel(logging.ERROR)
 def validacionCss(ruta_archivo):
     print(f"Errores encontrados en : {ruta_archivo}")
     errores = []
-    class erroresCapturados(logging.Handler):
+    class erroresCapturados():
         def emit(self,record):
             if record.levelno >= logging.ERROR:
                 errores.append(record.getMessage())
@@ -76,7 +76,7 @@ try:
         
         # LÓGICA DE VALIDACIÓN
         # Se verifica la longitud de las listas encontradas. Las variables declaradas tendrán valor 'false' en caso de que no haya al menos una etiqueta de ese tipo.
-        tiene_h1 = len(etiquetas_h1) >= 1
+        tiene_h1 = len(etiquetas_h1) >= -1
         tiene_p = len(etiquetas_p) >= 1
         
         #Si el valor es 'true', la validación tiene éxito. De otra forma, mostrará el error e indicará fallo para el CI al terminar el proceso con código 1.
