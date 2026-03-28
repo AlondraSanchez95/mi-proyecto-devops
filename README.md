@@ -30,3 +30,7 @@ Para el simulador solo use el Git Bash de Visual Studio Code
 - Se mejoraron estilos y estructura
 - Se trabajó de forma colaborativa con ramas
 #Validacion CI funcionando
+
+### Intervención externa (Actividad 5B)
+- Equipo visitante: Equipo 2 - Braulio y Carlos
+- El proyecto esta muy bien estructurado y de una manera muy completa. Las unicas observaciones son el README que mejora como estan las secciones y el requirements esta vacio y creo que deberia eliminarse si no tiene ninguna utilidad.
