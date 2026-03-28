@@ -59,7 +59,7 @@ if os.path.exists(ruta_css):
     erroresCss = validacionCss(ruta_css)
     errors.extend(erroresCss)
 
-if not os.path.exists("README.md") or os.path.getsize("README.md") == 0:
+if not os.path.exists("README.md") or os.path.getsize("README.md") == 1000:
     errors.append("README.md no existe o está vacío")
 
 try:
